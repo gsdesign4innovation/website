@@ -4,6 +4,109 @@
 <link rel="manifest" href="/site.webmanifest">
 <html>
 <head>
+<style>
+
+#overlay-button {
+ position: absolute;
+  right: 0.9em;
+  top: 2em;
+  
+  z-index: 5;
+  cursor: pointer;
+  user-select: none;
+}
+#overlay-button span {
+  height: 3px;
+  width: 35px;
+  border-radius: 2px;
+  background-color: #C0C0C0;
+  position: relative;
+  display: block;
+  transition: all 0.2s ease-in-out;
+}
+#overlay-button span:before {
+  top: -10px;
+  visibility: visible;
+}
+#overlay-button span:after {
+  top: 10px;
+}
+#overlay-button span:before, #overlay-button span:after {
+  height: 3px;
+  width: 35px;
+  border-radius: 2px;
+  background-color: #C0C0C0;/*#B713B0;*/
+  position: absolute;
+  content: "";
+  transition: all 0.2s ease-in-out;
+}
+#overlay-button:hover span, #overlay-button:hover span:before, #overlay-button:hover span:after {
+  background: #333332;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked ~ #overlay {
+  visibility: visible;
+}
+
+input[type="checkbox"]:checked ~ #overlay-button:hover span,
+input[type="checkbox"]:checked ~ #overlay-button span {
+  background: transparent;
+}
+input[type="checkbox"]:checked ~ #overlay-button span:before {
+  transform: rotate(45deg) translate(7px, 7px);
+  opacity: 1;
+}
+input[type="checkbox"]:checked ~ #overlay-button span:after {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+#overlay {
+  height: 30%;
+  width: 100%;
+  background-color: white;
+ /*background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);*/
+  z-index: 2;
+  visibility: hidden;
+  position: fixed;
+  margin-left: -17px;
+  margin-top: 10px;
+}
+#overlay.active {
+  visibility: visible;
+}
+#overlay ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  height: 30vh;
+  padding-left: 0;
+  list-style-type: none;
+
+}
+#overlay ul li {
+  padding: -0.4em;
+}
+#overlay ul li p {
+  color: #B713B0;
+  text-decoration: none;
+  font-size: 1.0em;
+
+}
+#overlay ul li p:hover {
+  color: #C0C0C0;/*#333332;*/
+}
+</style>
+
+  <script src="//code.tidio.co/a9t2g2wissptgdemfe2mh3l2deo2j8fa.js" async></script>
+
+
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -30,7 +133,7 @@ content="GSDesign is an industry leader in professional website design, strategy
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
  <meta name="google-site-verification" content="5mxHypaYUQqpoUZT6mNwRcVMoLMx8QbVPzPiRvPHjr0" />
-  <meta name="keywords" content="website design,website in hindi, website builder, website banner,website create, gsdesign, web development, app development, logo design, banner design, design, banner maker, poster design">
+  <meta name="keywords" content="website design,website in hindi, website builder, website banner,website create, gsdesign, web development, app development, logo design, banner design, design, banner maker, poster design, app, web, website in patna, logo in patna, patna, web development in patna, designer in patna, engineer patna, computer science in patna">
 <meta name="msvalidate.01" content="7CEA6B813ECB46258CA81840F2259BB9" />
   </head>
 <style>
@@ -64,9 +167,13 @@ a:hover {
 }
 .logo2 {
   padding: 0px 30px;
+  margin-left: -35px;
 }
 .btn1{
    color: #492D86;
+}
+html,body{
+  overflow-x: hidden;
 }
 </style>
  
@@ -81,11 +188,27 @@ a:hover {
 <div class="w3-top">
   <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
       <img src="https://dl.dropbox.com/s/zg6okh1z1z5rjr0/Gs%20design%20logo%202.png?dl=0" style="width: 200px" class="logo2">
+<div class="w3-hide-large w3-hide-medium">
+      <input type="checkbox" id="overlay-input" />
+<label for="overlay-input" id="overlay-button"><span></span></label>
+  <div id="overlay">
+    <ul>
+      <li><p onclick="document.location='#abtmb'">About Us</p><hr></li>
+      <li><p onclick="document.location='#menu'">Services</p><hr></li>
+      <li><p onclick="document.location='#contact'">Contact</p></li>
+    </ul>
+  </div></div>
+
+      <!--<div class="container786 w3-hide-large w3-hide-medium w3-right closebtn" onclick="myFunction(this)">
+  <div class="bar1"></div>
+  <div class="bar2"></div>
+  <div class="bar3"></div>
+</div>-->
    
     <div class="w3-right w3-hide-small">
-      <a href="#about" class="w3-bar-item navigavi" style="margin-right: 10px"><span class="btn1" >About us</span></a> 
-      <a href="#menu" class="w3-bar-item navigavi" style="margin-right: 10px"><span class="btn1" >Services</span></a>
-      <a href="#contact" class="w3-bar-item navigavi" style="margin-right: 10px"><span class="btn1" >Contact</span></a>
+      <a href="#about" class="w3-bar-item navigavi" style="margin-right: 10px; font-weight: 20px"><span class="btn1" style="font-weight: 550">About us</span></a> 
+      <a href="#menu" class="w3-bar-item navigavi" style="margin-right: 10px"><span class="btn1" style="font-weight: 550">Services</span></a>
+      <a href="#contact" class="w3-bar-item navigavi" style="margin-right: 10px"><span class="btn1" style="font-weight: 550">Contact</span></a>
     </div>
   </div>
 </div>
@@ -97,15 +220,60 @@ a:hover {
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" rel="stylesheet">
 <link href="hero-text-transitions.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+
+<style>
+.ant::before { 
+            content: "Emotions"; 
+            animation: animate infinite 10s; 
+        } 
+  
+        @keyframes animate { 
+  
+            0% { 
+                content: "Emotions"; 
+            } 
+  
+            50% { 
+                content: "Logo"; 
+            } 
+  
+            75% { 
+                content: "App"; 
+            } 
+        } 
+/*div.slide-down {
+  width:100%;
+  overflow:hidden;
+}*/
+div.slide-down p {
+  animation: 3s slide-down;
+  margin-top:0%;
+}
+
+@keyframes slide-down {
+  from {
+    margin-top: -100%;
+    height: 300%; 
+  }
+
+  to {
+    margin-top: 0%;
+    height: 100%;
+  }
+}
+</style>
 <!--<section class="hero-slider w3-hide-small">-->
-<section class="hero-slider w3-hide-small">
+<section class="hero-slider w3-hide-small w3-hide-medium">
 
   <div class="fullscreen-bg">
     <div class="overlay"></div>
     <div class="home-text-wrapper relative container">
                 <div class="home-message">
                     <img src="images/biglogo.png" alt="">
-                    <p>Web Design Agency</p>
+                    <div class="slide-down">
+                    <!--<p>Web Design Agency</p>--><p>We Design <span class="ant"> </span></p></div>
                   <h6 class="tago">“We don't just build websites, we build websites that SELLS”</h6><br>
                     <div class="btn-wrapper11">
                         <div class="text-center">
@@ -120,38 +288,6 @@ a:hover {
         <source src="https://dl.dropbox.com/s/jfkpxkkdxv3g88h/video.mp4?dl=0"" type="video/mp4">
     </video>
 </div>
-
-
-
-
-
-  <!--<div id="wrapper">
-        <div id="home" class="video-section js-height-full">
-            <div class="overlay"></div>
-            <div class="home-text-wrapper relative container">
-                <div class="home-message">
-                    <img src="images/biglogo.png" alt="">
-                    <p>Web Design Agency</p>
-                    <div class="btn-wrapper">
-                        <div class="text-center">
-                            <a href="#" class="btn btn-primary">Read More</a> &nbsp;<a href="#" class="btn btn-default">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-   <!-- <div class="hero-slide slider_1">
-      <div class="slider-overlay slider-1-overlay"></div>
-      <div class="container">
-      
-      </div>
-    </div>
-    <div class="hero-slide slider_2">
-      <div class="slider-overlay slider-2-overlay"></div>
-      <div class="container">
-   
-      </div>
-    </div>-->
 
   </section>
   <style>
@@ -428,9 +564,6 @@ RESPONSIVE
     }
 }
     </style>
-
-
-
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
@@ -584,13 +717,14 @@ $('.hero-slider').slick({
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" rel="stylesheet">
 <link href="hero-text-transitions.css" rel="stylesheet">
-<section class="hero-slider_2 w3-hide-medium w3-hide-large">
+
+<section class="hero-slider_2  w3-hide-large w3-hide-small" style="height: 800px;">
 
    <div class="fullscreen-bg">
     <div class="overlay"></div>
     <div class="home-text-wrapper relative container">
                 <div class="home-message">
-                    <img src="images/biglogo.png" alt="">
+                    <!--<img src="images/biglogo.png" alt="">-->
                     <p1>Web Design Agency</p1>
                  <h6 class="tago1">“We don't just build websites, we build websites that SELLS”</h6><br>
                     <div class="btn-wrapper11">
@@ -607,18 +741,32 @@ $('.hero-slider').slick({
     </video>
 </div>
 
-  <!--  <div class="hero-slide_2 slider_1_2">
-      <div class="slider-overlay_2 slider-1-overlay_2"></div>
-      <div class="container_2">
-      
-      </div>
-    </div>
-    <div class="hero-slide_2 slider_2_2">
-      <div class="slider-overlay_2 slider-2-overlay_2"></div>
-      <div class="container_2">
-   
-      </div>
-    </div>-->
+  </section>
+
+
+
+<section class="hero-slider_2  w3-hide-large w3-hide-medium" style="height: 600px; width: 100%">
+
+   <div class="fullscreen-bg">
+    <div class="overlay"></div>
+    <div class="home-text-wrapper relative container">
+                <div class="home-message">
+                    <!--<img src="images/biglogo.png" alt="">-->
+                    <p1>Web Design Agency</p1>
+                 <h6 class="tago1">“We don't just build websites, we build websites that SELLS”</h6><br>
+                    <div class="btn-wrapper11">
+                        <div class="text-center">
+                            <button  onclick="document.location='#menu'" class="button">Know More</button> &nbsp;
+                        </div>
+                    </div>
+
+                  </div></div>
+    <video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
+        <source src="https://dl.dropbox.com/s/jfkpxkkdxv3g88h/video.mp4?dl=0"" type="video/mp4">
+        <source src="https://dl.dropbox.com/s/jfkpxkkdxv3g88h/video.mp4?dl=0"" type="video/mp4">
+        <source src="https://dl.dropbox.com/s/jfkpxkkdxv3g88h/video.mp4?dl=0"" type="video/mp4">
+    </video>
+</div>
 
   </section>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -700,17 +848,6 @@ $('.hero-slider').slick({
      background-size: 100% 650px; /* 100% 700px;*/
    /* background-size: 100% 130%;*/
   }
-/* to hide in mobile version */
-/*@media screen and (max-width: 600px) {
-  .hero-slide {
-    visibility: hidden;
-    clear: both;
-    float: left;
-    margin: 10px auto 5px 20px;
-    width: 28%;
-    display: none;
-  }
-}*/
   @media screen and (min-width: 768px) { 
     .slider-overlay_2 {
       display: none;   
@@ -768,7 +905,7 @@ $('.hero-slider_2').slick({
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <body id="myPage">
 <!-- About Section -->
-<div class="mobileabout w3-hide-large w3-hide-medium">
+<div class="mobileabout w3-hide-large w3-hide-medium" id="abtmb">
  <div class="w3-row w3-padding-80 w3-hide-large" > <!--padding-64 -->
     <div class="w3-col m6 w3-padding-large  aboutimg"><!--w3-hide-small-->
       <h2 class="w3-center w3-hide-large ourservices">About Us</h2><br>
@@ -844,39 +981,213 @@ $('.hero-slider_2').slick({
       text-align: center;
       text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
     }
+
+
+
+
+.wrapperrr {
+    padding: 50px 50px;
+    max-width: 1200px; /*1200*/
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.right {float: right !important;}
+/* Image zoom on hover + Overlay colour */
+.parentt {
+    width: 45%;
+    margin: 20px;
+    height: 250px; /*300*/
+   /* border: 1px solid blue;*/
+    overflow: hidden;
+    position: relative;
+    float: left;
+    display: inline-block;
+    cursor: pointer;
+
+border-radius: 40px;
+background: #ffffff;
+box-shadow:  20px 20px 60px #d9d9d9, 
+             -20px -20px 60px #ffffff;
+
+
+}
+
+.childd {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+
+/* Several different images */
+.bg-one {background-image: url(https://dl.dropbox.com/s/hyn23ztv27od1qo/BgWebsite.jpg?dl=0);}
+.bg-two {background-image: url(https://dl.dropbox.com/s/0w4a805u5rvjpyc/appbg.jpg?dl=0);}
+.bg-three {background-image: url(https://dl.dropbox.com/s/wob1ah96nw0axdy/BgLogo.jpg?dl=0);}
+.bg-four {background-image: url(https://dl.dropbox.com/s/v5ut3kgpbhoekjk/BgGraphicDesign.jpg?dl=0);}
+/*.bg-five {background-image: url(http://www.travelandleisure.com/sites/default/files/styles/tnl_redesign_article_landing_page/public/1453920892/DUBAI-554088081-ABOVE0116.jpg?itok=dcoZnCrc);}
+.bg-six {background-image: url(http://blog.whitepages.com/wp-content/uploads/2015/04/san-franc.jpg);}*/
+
+
+.upser{
+   /* display: none;*/
+  
+    font-size: 22px;
+    color: black !important;
+    font-family: sans-serif;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    cursor: pointer;
+    /*text-decoration: none;*/
+}
+.upserimg{
+    /*display: none;*/
+    left: 0;
+    bottom: 10;
+    right: 0;
+    top: -85px;
+    position: absolute;
+    margin: auto;
+
+    /*font-size: 30px;
+    color: #ffffff !important;
+    font-family: sans-serif;
+    text-align: center;*/
+    /*margin: auto;
+    position: absolute;
+   /* top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    cursor: pointer;
+    /*text-decoration: none;*/
+}
+
+.parentt:hover .childd, .parentt:focus .childd {
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.parentt:hover .childd:before, .parentt:focus .childd:before {
+    display: block;
+}
+
+.parentt:hover p, .parentt:focus p {
+    display: block;
+}
+.parentt:hover img, .parentt:focus img {
+    display: block;
+}
+
+.childd:before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(40,60,80,0.5);/*rgba(52,73,94,0.75);*/
+}
+
+/* Media Queries */
+@media screen and (max-width: 960px) {
+    .parentt {width: 100%; margin: 20px 0px}
+        .wrapperrr {padding: 20px 20px;}
+}
+
 </style>
 <h2 class="ourservices" id="menu">Our Services</h2>
-<section class="service-grid pb-5 pt-5">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+
+
+
+<div class="wrapperrr">
+    <div class="parentt slideanimY" onclick="">
+        <div class="childd bg-one">
+          <img class="upserimg" src="https://dl.dropbox.com/s/ea1r21wlpnqy43n/Website%20design.png?dl=0" style="height:auto; width: 150px;">
+            <p class="upser">Website Development</p>
+        </div>
+    </div>
+
+    <div class="parentt right slideanim" onclick="">
+        <div class="childd bg-two">
+          <img class="upserimg" src="https://dl.dropbox.com/s/sj13lqw8oz4upnh/android%20%282%29.png?dl=0" style="height: 110px; width: 140px">
+            <p class="upser">Android App Development</p>
+        </div>
+    </div>
+
+    <div class="parentt slideanimY" onclick="">
+        <div class="childd bg-three">
+          <img class="upserimg" src="https://dl.dropbox.com/s/s44o5g9fio7fbos/logo.png?dl=0" style="height: auto; width: 140px">
+            <p class="upser">Logo Design</p>
+        </div>
+    </div>
+
+    <div class="parentt right slideanim" onclick="">
+        <div class="childd bg-four">
+          <img class="upserimg" src="https://dl.dropbox.com/s/c8612uyr8w3pwe7/Graphic%20design.png?dl=0" style="height: 100px; width: 140px">
+            <p class="upser">Graphic Design</p>
+        </div>
+    </div>
+   <!-- <div class="parentt" onclick="">
+        <div class="childd bg-five">
+            <a href="#" class="upser">Dubai</a>
+        </div>
+    </div>
+
+    <div class="parentt right" onclick="">
+        <div class="childd bg-six">
+            <a href="#" class="upser">San Francisco</a>
+        </div>
+    </div>-->
+</div>
+<!--<section class="service-grid pb-5 pt-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 text-center mb-3">
                         <div class="service-wrap">
                             <div class="service-icon">
                                <img src="https://dl.dropbox.com/s/ea1r21wlpnqy43n/Website%20design.png?dl=0" style="height:auto; width: 150px">
-                               <!--<i class="fas fa-globe"></i>-->
+                               
                             </div>
                             <h4>Website Development</h4>
-                            <!--<p>qawsedrftg qwerty qwerty werty qqwrt qqrety ..</p> -->
+                           
                         </div>
                     </div>
 <div class="col-lg-6 col-md-6 text-center mb-3">
                         <div class="service-wrap1">
                             <div class="service-icon">
                              <img src="https://dl.dropbox.com/s/sj13lqw8oz4upnh/android%20%282%29.png?dl=0" style="height: 110px; width: 140px">
-                               <!--<i class="fas fa-globe"></i>-->
+                             
                             </div>
                             <h4>Android App Development</h4>
-                           <!-- <p>qawsedrftg qwerty qwerty werty qqwrt qqrety ..</p> -->
+                          
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 text-center mb-3">
                         <div class="service-wrap11">
                             <div class="service-icon">
                               <img src="https://dl.dropbox.com/s/s44o5g9fio7fbos/logo.png?dl=0" style="height: auto; width: 140px">
-                               <!--<i class="fas fa-globe"></i>-->
+                               
                             </div>
                             <h4>Logo Design</h4>
-                            <!--<p>qawsedrftg qwerty qwerty werty qqwrt qqrety ..</p>--> 
+                           
                         </div>
                     </div>
 
@@ -884,17 +1195,114 @@ $('.hero-slider_2').slick({
                         <div class="service-wrap3">
                             <div class="service-icon">
                               <img src="https://dl.dropbox.com/s/c8612uyr8w3pwe7/Graphic%20design.png?dl=0" style="height: 100px; width: 140px">
-                               <!--<i class="fas fa-globe"></i>-->
+                              
                             </div>
                             <h4>Graphic Design</h4>
-                            <!--<p>qawsedrftg qwerty qwerty werty qqwrt qqrety ..</p>--> 
+                           
                         </div>
                     </div>
                     </div>
                 </div>
             </div>
-        </section><hr><br>
+        </section>--><br>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+      $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+</script>
+<script>
+      $(window).scroll(function() {
+    $(".slideanimY").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+</script>
+  </script>
  <style>
+.slideanim {visibility:hidden;}
+  .slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 3s;
+    -webkit-animation-duration: 3s;
+    visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateX(70%);
+    } 
+    100% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateX(70%);
+    } 
+    100% {
+      opacity: 1;
+      -webkit-transform: translateX(0%);
+    }
+  }
+
+  .slideanimY {visibility:hidden;}
+  .slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 3s;
+    -webkit-animation-duration: 3s;
+    visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateX(70%);
+    } 
+    100% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateX(70%);
+    } 
+    100% {
+      opacity: 1;
+      -webkit-transform: translateX(0%);
+    }
+  }
+
+
+
+
+
+
+
+
+
+
    /*Another one*/
 .service-wrap11 {
     /*border: 1px solid #e6e6e6;*/
@@ -905,7 +1313,6 @@ background: #ffffff;
 box-shadow:  20px 20px 60px #d9d9d9, 
              -20px -20px 60px #ffffff;
 }
-
 .service-wrap11 p{
       position: relative;
 }
@@ -945,8 +1352,6 @@ box-shadow:  20px 20px 60px #d9d9d9,
       position: relative;
     color: #fc6701;
 }
-
-
 .service-wrap11 {
     /*border: 1px solid #e6e6e6;*/
     padding: 50px 30px;
@@ -957,11 +1362,7 @@ box-shadow:  20px 20px 60px #d9d9d9,
              -20px -20px 60px #ffffff;
     
 }
-
-   
-   
-   
-   
+  
  .ourservices{
   text-align: center;
   font-weight: bolder;
@@ -1034,11 +1435,9 @@ background: #ffffff;
 box-shadow:  20px 20px 60px #d9d9d9, 
              -20px -20px 60px #ffffff;
 }
-
 .service-wrap1 p{
       position: relative;
 }
-
 .service-wrap1:hover {
     background-image: url(https://dl.dropbox.com/s/0w4a805u5rvjpyc/appbg.jpg?dl=0);
     background-size: cover;
@@ -1074,8 +1473,6 @@ box-shadow:  20px 20px 60px #d9d9d9,
       position: relative;
     color: #fc6701;
 }
-
-
 .service-wrap1 {
     /*border: 1px solid #e6e6e6;*/
     padding: 50px 30px;
@@ -1403,6 +1800,12 @@ box-shadow:  20px 20px 60px #d9d9d9,
 }
 .service78:hover{
   background: #DCDCDC;/*#ddd;*/
+    -webkit-transform:scale(1.10); /* Safari and Chrome */
+    -moz-transform:scale(1.10); /* Firefox */
+    -ms-transform:scale(1.10); /* IE 9 */
+    -o-transform:scale(1.10); /* Opera */
+     transform:scale(1.10);
+}
 }
 .service78 i{
   color: #3498db;
@@ -1533,14 +1936,26 @@ img {
   <div class="container">
       <div class="row" id="counter">
             <div class="col-sm-4 counter-Txt"> Customers<br><span class="fa fa-user"></span><br><span class="counter-value" data-count="150">0</span><span>+</span></div>
-            <div class="col-sm-4 counter-Txt"> Product<br><!--<span class="fa fa-clock-o"></span>--><span><img src="https://img.icons8.com/ios/30/000000/product.png"/></span><br><span class="counter-value" data-count="100">0</span><span>+</span> </div>
+            <div class="col-sm-4 counter-Txt"> Product<br><!--<span class="fa fa-clock-o"></span>--><span><img src="https://dl.dropbox.com/s/dz23f29owljzdev/product.png?dl=0" width="30px" height="30px"></span><br><span class="counter-value" data-count="100">0</span><span>+</span> </div>
             <div class="col-sm-4 counter-Txt margin-bot-35"> Happy Clients<br><!--<span class="fa fa-clock-o">--><span class="far fa-smile"></span><br><span class="counter-value" data-count="150">0</span><span>+</span> </div>
         </div>
     </div>
 </div>
 <br>
+<h2 class="ourservices">Our Clients</h2><br>
+<img src="https://dl.dropbox.com/s/6ylh0zyodfdg03j/logo%20collage%20%281%29.png?dl=0">
+<!--<div class="clnt">
+<marquee behavior="scroll" direction="left" scrollamount="10" hspace="130px" vspace="320px"><img src="https://dl.dropbox.com/s/6d25ewg4fkjn9dx/anjuman.png?dl=0" width=100px" height="100px" style=" margin:0 40px 0 0;">        <img src="https://dl.dropbox.com/s/wvpri59guszyiez/design%20hub.png?dl=0" width="150px" height="100px" style=" margin:0 40px 0 0;">        <img src="https://dl.dropbox.com/s/um3u8r6fa4afx28/mellow%20mood.png?dl=0" width="100px" height="100px" style=" margin:0 40px 0 0;"> <img src="https://dl.dropbox.com/s/14e163dm989rjuo/the%20tarjuma%20png%20%281%29.png?dl=0" width="150px" height="100px" style=" margin:0 40px 0 0;">  <img src="https://dl.dropbox.com/s/hzbdzjw673a555p/witech.png?dl=0" width="150px" height="100px" style=" margin:0 40px 0 0;">   <img src="https://dl.dropbox.com/s/vyrhxt54c4yjfmr/Agira.png?dl=0" width="150px" height="100px" style=" margin:0 40px 0 0;">  <img src="https://dl.dropbox.com/s/sovj8qbi1mc1yhf/rock%20gym.png?dl=0" width="150px" height="100px" style=" margin:0 40px 0 0;"></marquee><br><br>
+
+</div>--><br><br>
 
 <style>
+.clnt{
+background-color: #D3D3D3;
+  height: 100px;
+}
+
+
  .testimg{
     width: 150px;
   }
@@ -1606,11 +2021,102 @@ img {
   </div>
 </div>
 </div><br><hr>
+<style>
+
+.wrapper101{
+  position: relative;
+  top: 10%;
+  left:70%; /*92*/
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper100{
+  position: relative;
+  top: 10%;
+  left: 92%; /*92*/
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+}
+
+.hvrbt{
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #B713B0;
+  border: 2px solid #B713B0;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+}
+
+.hvrbt span{
+  position: relative;
+  z-index: 2;
+}
+
+.hvrbt:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #492D86;/*#ff003b;*/
+  transition: all .35s;
+}
+
+.hvrbt:hover{
+  color: #fff;
+}
+
+.hvrbt:hover:after{
+  width: 100%;
+}
+.thnkng{
+  color: grey;
+}
+</style>
+
+<!--<h2 class="ourservices">Join Us</h2><br>
+<div class="jnus"><br><br><br>-->
+  <h1 class="thnkng" style="text-align: center; color: #B713B0;">Thinking of Design?</h1>
+  <h1 class="thnkng" style="text-align: center; font-size: 20px;">Let's craft brilliance together!</h1><br>
+  <div class="wrapper100 w3-hide-small">
+  <p class="hvrbt" onclick="document.location='#contact'"><span>Get In Touch!</span></p>
+</div>
+<div class="wrapper101 w3-hide-large w3-hide-medium">
+  <p class="hvrbt" onclick="document.location='#contact'"><span>Get In Touch!</span></p>
+</div>
+<!--<div class="text-center">
+                           <button  onclick="document.location='#menu'" class="button">Get In Touch</button>
+                        </div>
+  </div>-->
 
 
 
 
-<section id="team" class="padd-section text-center wow fadeInUp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<section id="team" class="padd-section text-center wow fadeInUp">
 
     <div class="container">
       <div class="section-title text-center">
@@ -1722,15 +2228,13 @@ img {
             </div>
           </div>
         </div>
-
-       
-
       </div>
     </div>
-  </section>
+  </section>-->
     <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="lib/modal-video/css/modal-video.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
 i {
   display: inline-block;
@@ -2205,26 +2709,40 @@ $(window).scroll(function() {
 <style>
   .c-no
   {
-    height:200px;
+    height:170px;
     width: 100%;
+   /* margin-left: -115px;*/
   }
 .grey-bg
 {
- 
-  background: #FFFFFF;/*#333;*//*#ebebeb;*/
+ background: linear-gradient(rgba(36, 70, 105, 0.74), rgba(36, 70, 105, 0.74)),
+ url("https://dl.dropbox.com/s/4ajdzam34zwlltr/WhatsApp%20Image%202020-09-04%20at%2010.23.08%20PM.jpeg?dl=0") no-repeat center center fixed;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+    border-radius: 7px;
+     background-size: cover;
+  background-size: 100% 100%;
+   /* opacity: 0.2;
+    background-color: #000000;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);*/
+
+ /*#333;*//*#ebebeb;*/
 }
 .counter-Txt{
   text-align:center;
    font-size:15px;
     /*font-weight:bold; */
     text-transform:uppercase; 
-   margin-top:20px;
-     color: grey;
+   margin-top:50px;
+   color: white !important;
+     /*color: grey;*/
   }
 .counter-Txt span{
   display:row; 
   font-size:25px;
-   color: grey;
+  color:white !important;
+   /*color: grey;*/
 }
 @media(min-width:320px) and (max-width:767px){ 
 .c-no{
@@ -2384,20 +2902,6 @@ input[type=submit]:hover {
   </section><!-- #contact -->
   <style>
   @charset "UTF-8";
-/*
-  Theme Name: eStartup
-  Theme URL: https://bootstrapmade.com/estartup-bootstrap-landing-page-template/
-  Author: BootstrapMade.com
-  License: https://bootstrapmade.com/license/
-*/
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-# Sections
---------------------------------------------------------------*/
 .padd-section {
   padding-bottom: 80px;
   padding-top: 80px;
@@ -2416,14 +2920,6 @@ input[type=submit]:hover {
     margin-bottom: 40px;
   }
 }
-/*.section-title h2 {
-  font-family: "Roboto", sans-serif;
-  font-size: 45px;
-  font-weight: 100;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  text-transform: capitalize;
-}*/
 .section-title .separator {
   margin: 0;
 }
@@ -2698,23 +3194,6 @@ document.onmousedown = rtclickcheck;
 
 </SCRIPT>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--end of hide source code-->
 
     <footer class="flex-col">
@@ -2864,9 +3343,6 @@ footer {
 </style>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&amp;display=swap">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-
-
-
 <!--firebase-->
 <script>
 
@@ -2968,25 +3444,20 @@ function sendMessage(name, email, password){
 
 <script>
   // Initialize Firebase
-
   firebase.initializeApp(firebaseConfig);
 </script>
 <script src=" https://gsdesign-de7a4.firebaseio.com/"></script>
 <body>
   <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
   <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
   <script src="/__/firebase/7.14.2/firebase-app.js"></script>
-
   <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
   <script src="/__/firebase/7.14.2/firebase-analytics.js"></script>
-
   <!-- Add Firebase products that you want to use -->
   <script src="/__/firebase/7.14.2/firebase-auth.js"></script>
   <script src="/__/firebase/7.14.2/firebase-firestore.js"></script>
 </body>
 <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
   <script src="app.js"></script>
-
   <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
   <script src="app.js"></script>
